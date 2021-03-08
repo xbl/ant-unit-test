@@ -1,4 +1,4 @@
-<project name="MyProject" default="dist" basedir="." xmlns:jacoco="antlib:org.jacoco.ant" xmlns:sonar="antlib:org.sonar.ant">
+<project name="MyProject" default="test" basedir="." xmlns:jacoco="antlib:org.jacoco.ant" xmlns:sonar="antlib:org.sonar.ant">
     <description>
         simple example build file
     </description>
