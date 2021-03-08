@@ -1,0 +1,11 @@
+version: '3'
+
+services:
+    sonar:
+        container_name: 'sonar.example.com'
+        image: 'sonarqube:latest'
+        restart: always
+        hostname: 'sonarqube.example.com'
+        privileged: true
+        ports:
+            - '9000:9000'

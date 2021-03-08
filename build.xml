@@ -1,4 +1,4 @@
-<project name="MyProject" default="dist" basedir="." xmlns:jacoco="antlib:org.jacoco.ant">
+<project name="MyProject" default="dist" basedir="." xmlns:jacoco="antlib:org.jacoco.ant" xmlns:sonar="antlib:org.sonar.ant">
     <description>
         simple example build file
     </description>
@@ -8,9 +8,21 @@
     <property name="build" location="build"/>
     <property name="dist" location="dist"/>
 
+    <!--  unit test report  -->
     <property name="report" location="report"/>
     <property name="report.dir" location="${report}/site/jacoco" />
     <property name="report.file" location="${report}/jacoco.exec" />
+
+    <!--  sonar  -->
+    <property name="sonar.host.url" value="http://sonar.example.com:9000" />
+
+    <!-- Define the SonarQube project properties -->
+    <property name="sonar.projectKey" value="ant-unit-demo" />
+    <property name="sonar.projectName" value="ant-unit-demo" />
+    <property name="sonar.projectVersion" value="1.0" />
+    <property name="sonar.sources" value="src" />
+    <property name="sonar.java.binaries" value="build" />
+    <property name="sonar.java.libraries" value="lib/*.jar" />
 
     <taskdef uri="antlib:org.jacoco.ant" resource="org/jacoco/ant/antlib.xml">
         <classpath path="lib/jacocoant.jar" />
@@ -90,5 +102,15 @@
             <csv destfile="${report.dir}/report.csv" />
             <xml destfile="${report.dir}/report.xml" />
         </jacoco:report>
+    </target>
+
+    <target name="sonar" depends="compile">
+        <taskdef uri="antlib:org.sonar.ant" resource="org/sonar/ant/antlib.xml">
+            <!-- Update the following line, or put the "sonarqube-ant-task-*.jar" file in your "$HOME/.ant/lib" folder -->
+            <classpath path="lib/sonarqube-ant-task-2.7.0.1612.jar" />
+        </taskdef>
+
+        <!-- Execute SonarScanner for Ant Analysis -->
+        <sonar:sonar />
     </target>
 </project>
