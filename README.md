@@ -40,7 +40,7 @@ ant report
 
 sonar 分析
 ```
-ant sonar
+ant sonar -v
 ```
 
 #### 说明
