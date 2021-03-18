@@ -9,3 +9,5 @@ services:
         privileged: true
         ports:
             - '9000:9000'
+        volumes: 
+            - ./volumes/extensions:/opt/sonarqube/extensions
