@@ -23,6 +23,9 @@
     <property name="sonar.sources" value="src" />
     <property name="sonar.java.binaries" value="build" />
     <property name="sonar.java.libraries" value="lib/*.jar" />
+    <!-- 忽略掉 part 目录 -->
+    <!-- 参见： https://docs.sonarqube.org/latest/project-administration/narrowing-the-focus/ -->
+    <property name="sonar.exclusions" value="src/com/xbl/demo/part/**" />
 
     <!--
     sonar 测试报告配置，已经弃用 jacoco.exec
